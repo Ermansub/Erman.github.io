@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		.helptext {
+			display: block;
+			padding: 10px;
+			background: #fff29a;
+			border-radius: 10px;
+			margin: 10px 0;
+		}
+		.card-body input {
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			margin-left: 10px;
+			padding: 5px 10px
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 offset-md-3 py-3">
+				<form action="/registration/" class="card shadow" method="POST">
+					<h3 class="card-header">Регистрация</h3>
+					<div class="card-body">
+						{% csrf_token %}
+						{{ form }}
+						<hr>
+						<div class="form-group">
+							<button class="btn btn-success btn-block" type="submit">Регистрация</button>
+							<a href="/" class="text-muted pt-3 text-center d-block">Авторизация</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

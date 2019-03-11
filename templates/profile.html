@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mb-5">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg rounded-pill">
+				<a class="navbar-brand" href="/"><img src="{% static "images/logo.png" %}" alt="SU" height="50px"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"><a class="nav-link" href="/users/">Пользователи</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Подписки</a></li>
+					</ul>
+					<a class="btn btn-outline-primary" href="/user/id{{ user.id }}">{{ user.username }}</a>
+					<a class="nav-link" href="/logout">Выйти</a>
+				</div>
+			</nav>
+			</div>
+			<div class="col-md-8 offset-md-2 bg-dark py-3 text-light rounded">
+				<h1>{{ user_page }}</h1>
+				<hr>
+				{% if user_page.id != user.id %}
+				<div class="form-group clearfix">
+					<label for="question">Задайте свой вопрос:</label>
+					<textarea name="" id="question" cols="30" rows="3" class="form-control"></textarea>
+					<button class="btn btn-success float-right mt-3">Задать вопрос</button>
+				</div>
+				{% else %}
+				<h3>Вопросы вам:</h3>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
